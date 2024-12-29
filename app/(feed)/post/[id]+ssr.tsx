@@ -19,6 +19,7 @@ export async function loader({ params }) {
         id: postsTable.id,
         content: postsTable.content,
         createdAt: postsTable.createdAt,
+        imageuuid: postsTable.imageuuid,
         username: usersTable.username,
       })
       .from(postsTable)
