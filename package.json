@@ -1,0 +1,43 @@
+{
+  "name": "onefeed",
+  "version": "1.1.374",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:web": "one build",
+    "clean": "one clean",
+    "db:check": "bash -c \"$npm_execpath db:push 2>&1 >/dev/null | grep ECONNREFUSED >/dev/null; if [ $? -eq 1 ]; then echo '\n\n❌ Note! Error running db:push, you may need to set up and run your db. See README.md\n\n'; exit 1; fi\"",
+    "db:generate": "drizzle-kit generate --config ./code/db/drizzle.config.ts",
+    "db:init": "$npm_execpath db:generate && $npm_execpath db:push && $npm_execpath db:seed",
+    "db:migrate": "dotenvx run -f .env -- tsx ./code/db/run-migrations.ts",
+    "db:push": "drizzle-kit push --config ./code/db/drizzle.config.ts",
+    "db:seed": "dotenvx run -f .env -- tsx ./code/db/seed.ts",
+    "dev": "$npm_execpath db:check && $npm_execpath one dev",
+    "dev:clean": "one dev --clean",
+    "serve": "one serve",
+    "upgrade:tamagui": "$npm_execpath up '*tamagui*' '@tamagui/*'"
+  },
+  "dependencies": {
+    "@dotenvx/dotenvx": "^1.12.1",
+    "@tamagui/config": "^1.121.3",
+    "@tamagui/image-next": "^1.121.3",
+    "@tamagui/lucide-icons": "^1.121.3",
+    "@vxrn/color-scheme": "1.1.374",
+    "better-sqlite3": "^11.2.1",
+    "dotenv": "^16.4.5",
+    "drizzle-kit": "^0.30.1",
+    "drizzle-orm": "^0.38.3",
+    "one": "1.1.374",
+    "postgres": "^3.4.4",
+    "react": "^18.3.1",
+    "tamagui": "^1.121.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "@faker-js/faker": "next",
+    "@tamagui/vite-plugin": "^1.121.3",
+    "@types/react": "^18.3.11",
+    "tsx": "^4.19.0",
+    "vite": "^6.0.6"
+  }
+}
