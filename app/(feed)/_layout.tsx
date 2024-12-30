@@ -1,41 +1,13 @@
-import { isWeb, View } from 'tamagui'
-import { Slot, Stack } from 'one'
-import { ToggleThemeButton } from '~/code/theme/ToggleThemeButton'
-import { Logo } from '~/code/brand/Logo'
+import { View } from "tamagui";
+import { Slot } from "one";
+import { WriteButton } from "~/app/(feed)/write-button";
 
 export default function FeedLayout() {
   return (
-    <View flex={1}>
-      {isWeb ? (
-        <Slot />
-      ) : (
-        <Stack
-          screenOptions={({ route }) => {
-            return {
-              title: (route?.params as any)?.preloadTitle || undefined,
-              headerRight() {
-                return (
-                  <View px="$2">
-                    <ToggleThemeButton />
-                  </View>
-                )
-              },
-            }
-          }}
-        >
-          <Stack.Screen
-            name="index"
-            options={{
-              title: 'Feed',
-              gestureEnabled: true,
-              headerLeft() {
-                return <Logo mr="$4" />
-              },
-            }}
-          />
-          <Stack.Screen name="post/[id]" />
-        </Stack>
-      )}
+    <View flex={1} flexGrow={1}>
+      <Slot />
+
+      <WriteButton />
     </View>
-  )
+  );
 }

@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import {
   createStyledContext,
   isTouchable,
-  ScrollView,
   SizableText,
   styled,
   View,
@@ -43,9 +42,7 @@ function HomeLayoutTouch() {
       </XStack>
 
       <YStack f={1}>
-        <ScrollView>
-          <Slot />
-        </ScrollView>
+        <Slot />
       </YStack>
 
       <XStack
@@ -97,9 +94,7 @@ function HomeLayoutMouse() {
       </YStack>
 
       <YStack f={1}>
-        <ScrollView>
-          <Slot />
-        </ScrollView>
+        <Slot />
       </YStack>
     </XStack>
   );

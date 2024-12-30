@@ -1,11 +1,13 @@
 import { desc, eq, sql } from "drizzle-orm";
 import { getURL, Stack, useLoader, type LoaderProps } from "one";
 import { RefreshControl } from "react-native";
-import { ScrollView } from "tamagui";
+import { Button, ScrollView } from "tamagui";
 import { db } from "~/code/db/connection";
 import { postsTable, usersTable } from "~/code/db/schema";
 import { FeedCard } from "~/code/feed/FeedCard";
 import { PageContainer } from "~/code/ui/PageContainer";
+import { Pencil } from "@tamagui/lucide-icons";
+import { WriteButton } from "~/app/(feed)/write-button.js";
 
 export async function loader({ path }: LoaderProps) {
   try {
@@ -45,7 +47,6 @@ export function FeedPage() {
           title: "Feed",
         }}
       />
-
       <PageContainer>
         <ScrollView maxHeight="100%">
           <RefreshControl refreshing={false} />
