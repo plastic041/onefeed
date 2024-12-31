@@ -6,6 +6,7 @@ import "./_layout.css";
 import { SchemeProvider, useColorScheme } from "@vxrn/color-scheme";
 import { LoadProgressBar } from "one";
 import { isWeb, TamaguiProvider } from "tamagui";
+import { ToastProvider, ToastViewport } from "@tamagui/toast";
 import { HomeLayout } from "~/code/home/HomeLayout";
 import config from "../config/tamagui.config";
 
@@ -28,7 +29,10 @@ export default function Layout() {
 
       <SchemeProvider>
         <TamaguiRootProvider>
-          <HomeLayout />
+          <ToastProvider>
+            <HomeLayout />
+            <ToastViewport />
+          </ToastProvider>
         </TamaguiRootProvider>
       </SchemeProvider>
     </>

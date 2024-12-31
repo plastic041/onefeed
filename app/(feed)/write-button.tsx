@@ -6,4 +6,5 @@ export const WriteButton = styled(Button, {
   r: "$4",
   b: "$4",
   pos: "absolute",
+  theme: "blue",
 });
